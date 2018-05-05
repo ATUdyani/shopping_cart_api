@@ -1,9 +1,13 @@
 var express = require('express');
 //var path = require('path');
 var bodyParser = require('body-parser');
- 
+var mongoose = require('mongoose');
+
 var app = express();
- 
+
+//connect to mongoose
+mongoose.connect('mongodb://localhost/shoppingcart');
+var db = mongoose.connection;
 
 app.use(bodyParser.json());
  
@@ -23,6 +27,8 @@ app.all('/*', function(req, res, next) {
 app.get('/', function(req,res){
   res.send('Hello!');
 });
+
+app.use('/', require('./routes'));
  
 // Auth Middleware - This will check if the token is valid
 // Only the requests that start with /api/v1/* will be checked for the token.

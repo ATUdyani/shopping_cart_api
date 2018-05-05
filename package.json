@@ -2,7 +2,7 @@
   "name": "shopping_cart_api",
   "version": "1.0.0",
   "description": "shopping cart api",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "mongoose": "^5.0.17"
   }
 }
