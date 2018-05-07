@@ -21,13 +21,18 @@ var user = {
       })
     },
    
-    create: function(req, res) {
-      var newUser = req.body;
+    register: function(req, res) {
+      var newUser = new User({
+        name: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+        userType: req.body.userType
+      });
       User.createUser(newUser, function(err,userRes){
         if (err){
           throw err ;
         }
-        res.json(userRes);
+        res.json({success: true,user: userRes});
       })
     }
 }

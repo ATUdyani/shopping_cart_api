@@ -5,6 +5,10 @@ var ordertItem  = require('./orderItem.js');
 var myBill  = require('./myBill.js');
 var myCart  = require('./myCart.js');
 var user  = require('./user.js');
+var auth = require('./auth.js');
+
+router.post('/login', auth.login);
+router.post('/signup', user.register);
 
 router.get('/api/v1/productItems', productItem.getAll);
 router.get('/api/v1/productItem/:id', productItem.getOne);
@@ -23,6 +27,5 @@ router.post('/api/v1/myCart', myCart.create);
 
 router.get('/api/v1/users', user.getAll);
 router.get('/api/v1/user/:id', user.getOne);
-router.post('/api/v1/user', user.create);
 
 module.exports = router;
