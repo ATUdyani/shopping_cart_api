@@ -8,21 +8,21 @@ var user  = require('./user.js');
 
 router.get('/api/v1/productItems', productItem.getAll);
 router.get('/api/v1/productItem/:id', productItem.getOne);
-router.post('/api/v1/productItem/', productItem.create);
+router.post('/api/v1/productItem', productItem.create);
 
-router.get('/api/v1/oredrItems', ordertItem.getAll);
-router.get('/api/v1/oredrItem/:id', ordertItem.getOne);
-router.post('/api/v1/oredrItem/', ordertItem.create);
+router.get('/api/v1/orderItems', ordertItem.getAll);
+router.get('/api/v1/orderItem/:id', ordertItem.getOne);
+router.post('/api/v1/orderItem', ordertItem.create);
 
 router.get('/api/v1/myBill/:id', myBill.get);
-router.post('/api/v1/myBill/', myBill.create);
+router.post('/api/v1/myBill', myBill.create);
 
 router.get('/api/v1/myCarts', myCart.getAll);
 router.get('/api/v1/myCart/:id', myCart.getOne);
-router.post('/api/v1/myCart/', myCart.create);
+router.post('/api/v1/myCart', myCart.create);
 
-router.get('/api/v1/user', user.getAll);
+router.get('/api/v1/users', user.getAll);
 router.get('/api/v1/user/:id', user.getOne);
-router.post('/api/v1/user/', user.create);
+router.post('/api/v1/user', user.create);
 
 module.exports = router;

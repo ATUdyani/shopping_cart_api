@@ -1,33 +1,33 @@
-var OredrItem  = require('../models/orderItem.js');
+var OrderItem  = require('../models/orderItem.js');
 
 var orderItems = {
  
     getAll: function(req, res) {
-      OredrItem.getOredrItems(function(err,orderItem){
+      OrderItem.getOrderItems(function(err,orderItemRes){
         if (err){
           throw err ;
         }
-        res.json(alloredrItems);
+        res.json(orderItemRes);
       })
     },
    
     getOne: function(req, res) {
       var id = req.params.id;
-      OrderItem.getOrderItem(id, function(err,orderItem){
+      OrderItem.getOrderItem(id, function(err,orderItemRes){
         if (err){
           throw err ;
         }
-        res.json(orderItem);
+        res.json(orderItemRes);
       })
     },
    
     create: function(req, res) {
-      var orderItem = req.body;
-      OrderItem.addOrderItem(orderItem, function(err,orderItem){
+      var newOrderItem = req.body;
+      OrderItem.addOrderItem(newOrderItem, function(err,orderItemRes){
         if (err){
           throw err ;
         }
-        res.json(orderItem);
+        res.json(orderItemRes);
       })
     }
 }

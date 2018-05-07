@@ -3,31 +3,31 @@ var ProductItem  = require('../models/productItem.js');
 var productItem = {
  
     getAll: function(req, res) {
-      ProductItem.getProductItems(function(err,productItems){
+      ProductItem.getProductItems(function(err,productItemsRes){
         if (err){
           throw err ;
         }
-        res.json(productItems);
+        res.json(productItemsRes);
       })
     },
    
     getOne: function(req, res) {
       var id = req.params.id;
-      ProductItem.getProductItem(id, function(err,productItem){
+      ProductItem.getProductItem(id, function(err,productItemsRes){
         if (err){
           throw err ;
         }
-        res.json(productItem);
+        res.json(productItemsRes);
       })
     },
    
     create: function(req, res) {
       var newProductItem = req.body;
-      ProductItem.addProductItem(productItem, function(err,productItem){
+      ProductItem.addProductItem(newProductItem, function(err,productItemsRes){
         if (err){
           throw err ;
         }
-        res.json(productItem);
+        res.json(productItemsRes);
       })
     }
 }

@@ -3,31 +3,31 @@ var User  = require('../models/user.js');
 var user = {
  
     getAll: function(req, res) {
-      User.getUsers(function(err,user){
+      User.getUsers(function(err,userRes){
         if (err){
           throw err ;
         }
-        res.json(allCart);
+        res.json(userRes);
       })
     },
    
     getOne: function(req, res) {
       var id = req.params.id;
-      User.getUser(id, function(err,user){
+      User.getUser(id, function(err,userRes){
         if (err){
           throw err ;
         }
-        res.json(user);
+        res.json(userRes);
       })
     },
    
     create: function(req, res) {
-      var user = req.body;
-      User.addUser(user, function(err,user){
+      var newUser = req.body;
+      User.createUser(newUser, function(err,userRes){
         if (err){
           throw err ;
         }
-        res.json(user);
+        res.json(userRes);
       })
     }
 }

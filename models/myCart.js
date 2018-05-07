@@ -16,6 +16,7 @@ var myCartSchema = mongoose.Schema({
 	},
 	myBill:{
 		type: String,
+		required : true
 	}
 });
 
@@ -23,15 +24,15 @@ var MyCart = module.exports = mongoose.model('MyCart',myCartSchema);
 
 //Get Carts
 module.exports.getCarts = function(callback, limit){
-	MyBill.find(callback).limit(limit);
+	MyCart.find(callback).limit(limit);
 }
 
 //Get Cart 
 module.exports.getCart = function(_id, callback){
-	getCart.findById(_id, callback);
+	MyCart.findById(_id, callback);
 }
 
 //Add Cart
 module.exports.addCart = function(cart, callback){
-	MyBill.create(cart, callback);
+	MyCart.create(cart, callback);
 }

@@ -3,31 +3,31 @@ var MyCart  = require('../models/myCart.js');
 var myCart = {
 
     getAll: function(req, res) {
-      MyCart.getCarts(function(err,myCart){
+      MyCart.getCarts(function(err,myCartRes){
         if (err){
           throw err ;
         }
-        res.json(allCart);
+        res.json(myCartRes);
       })
       },
 
     getOne: function(req, res) {
       var id = req.params.id;
-      MyCart.getCart(id, function(err,myCart){
+      MyCart.getCart(id, function(err,myCartRes){
         if (err){
           throw err ;
         }
-        res.json(myCart);
+        res.json(myCartRes);
       })
     },
    
     create: function(req, res) {
-      var myCart = req.body;
-      MyCart.addCart(myCart, function(err,myCart){
+      var newCart = req.body;
+      MyCart.addCart(newCart, function(err,myCartRes){
         if (err){
           throw err ;
         }
-        res.json(myCart);
+        res.json(myCartRes);
       })
     }
 }

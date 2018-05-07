@@ -4,23 +4,22 @@ var myBill = {
 
     get: function(req, res) {
       var id = req.params.id;
-      MyBill.getBill(id, function(err,myBill){
+      MyBill.getBill(id, function(err,myBillRes){
         if (err){
           throw err ;
         }
-        res.json(myBill);
+        res.json(myBillRes);
       })
     },
    
     create: function(req, res) {
-      var myBill = req.body;
-      MyBill.addBill(myBill, function(err,myBill){
+      var newBill = req.body;
+      MyBill.addBill(newBill, function(err,myBillRes){
         if (err){
           throw err ;
         }
-        res.json(myBill);
+        res.json(myBillRes);
       })
-      res.json(myBill);
     }
 }
 

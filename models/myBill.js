@@ -19,8 +19,8 @@ var myBillSchema = mongoose.Schema({
 var MyBill = module.exports = mongoose.model('MyBill',myBillSchema);
 
 //Get Bill
-module.exports.getBill = function(callback, limit){
-	MyBill.find(callback).limit(limit);
+module.exports.getBill = function(_id, callback){
+	MyBill.findById(_id, callback);
 }
 
 //Add Bill
