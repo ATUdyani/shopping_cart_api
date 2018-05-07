@@ -21,13 +21,13 @@ var user = {
       })
     },
    
-    create: function(req, res) {
+    register: function(req, res) {
       var newUser = req.body;
       User.createUser(newUser, function(err,userRes){
         if (err){
           throw err ;
         }
-        res.json(userRes);
+        res.json({success: true,user: userRes});
       })
     }
 }

@@ -6,10 +6,9 @@ var myCartSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	orderItem:{
-		type: String,
-		required: true
-	},
+	orderItem:[{
+		type: String
+	}],
 	user:{
 		type: String,
 		required: true
