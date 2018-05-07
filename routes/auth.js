@@ -1,5 +1,6 @@
-var User = require('../model/user');
+var User = require('../models/user');
 var jwt = require('jwt-simple');
+var config = require('../config/config');
 var auth = {
  
     login: function(req, res) {
@@ -17,41 +18,34 @@ var auth = {
       }
    
       // Fire a query to your DB and check if the credentials are valid
-      var dbUserObj = auth.validate(username, password);
-     
-      if (!dbUserObj) { // If authentication fails, we send a 401 back
-        res.status(401);
-        res.json({
-          "status": 401,
-          "message": "Invalid credentials"
-        });
-        return;
-      }
-   
-      if (dbUserObj) {
-        res.json({success:true,token:genToken(dbUserObj)});
-      }
+      var dbUserObj = auth.validate(username, password, function(user, tokenDetail){
+        if(!user) {
+          res.send({success: false, msg: 'Authentication failed. user is not found.'});
+        }
+        else if(tokenDetail) {
+          res.json({success: true, token: 'JWT ' + tokenDetail.token, expires:tokenDetail.expires});
+        } else {
+          res.send({success: false, msg: 'Authentication failed. Wrong password.'});
+        }
+      });
    
     },
    
-    validate: function(username, password) {
+    validate: function(username, password, cb) {
         User.findOne({
-            name: req.body.name
+            name: username
           }, function(err, user) {
             if (err) throw err;
          
             if (!user) {
-              res.send({success: false, msg: 'Authentication failed. User not found.'});
+              cb(null, null);
             } else {
               // check if password matches
-              user.comparePassword(req.body.password, function (err, isMatch) {
+              user.comparePassword(password, function (err, isMatch) {
                 if (isMatch && !err) {
-                  // if user is found and password is right create a token
-                  var tokenDetail = genToken(user.username);
-                  // return the information including token as JSON
-                  res.json({success: true, token: 'JWT ' + tokenDetail});
+                  cb(user, genToken(user.name));
                 } else {
-                  res.send({success: false, msg: 'Authentication failed. Wrong password.'});
+                  cb(user, null);
                 }
               });
             }
@@ -77,12 +71,11 @@ var auth = {
     var token = jwt.encode({
       exp: expires,
       username: username
-    }, require('../config/secret')());
+    }, config.secret);
    
     return {
       token: token,
-      expires: expires,
-      user: user
+      expires: expires
     };
   }
    

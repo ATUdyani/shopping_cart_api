@@ -27,6 +27,5 @@ router.post('/api/v1/myCart', myCart.create);
 
 router.get('/api/v1/users', user.getAll);
 router.get('/api/v1/user/:id', user.getOne);
-router.post('/api/v1/user', user.create);
 
 module.exports = router;
