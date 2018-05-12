@@ -1,4 +1,4 @@
 module.exports = {
     'secret': 'devdacticIsAwesome',
-    'database': 'mongodb://localhost/shoppingcart'
+    'database': 'mongodb://35.231.153.93/shoppingcart'
   };
