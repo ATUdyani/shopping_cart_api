@@ -6,16 +6,20 @@ var myCartSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	status:{
+		type: Boolean,
+		required: true
+	},
 	orderItem:[{
 		type: String
 	}],
 	user:{
-		type: String,
-		required: true
+		type: mongoose.Schema.Types.ObjectId,
+		ref : 'User'
 	},
 	myBill:{
-		type: String,
-		required: true
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'MyBill'
 	}
 });
 
@@ -34,4 +38,11 @@ module.exports.getCart = function(_id, callback){
 //Add Cart
 module.exports.addCart = function(cart, callback){
 	MyCart.create(cart, callback);
+}
+
+//Get Cart Id 
+module.exports.getMyCartId = function(userId, callback){
+	MyCart.findOne({
+		user:userId, status: true
+	}, callback);
 }

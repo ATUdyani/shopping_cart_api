@@ -23,10 +23,9 @@ var myCart = {
    
     create: function(req, res) {
       var newCart = new MyCart({
-        name: req.body.username,
-        email: req.body.email,
-        password: req.body.password,
-        userType: req.body.userType
+        refId: req.body.refId,
+        user: req.body.user,
+        status: true
       });
       MyCart.addCart(newCart, function(err,myCartRes){
         if (err){
@@ -34,7 +33,24 @@ var myCart = {
         }
         res.json(myCartRes);
       })
+    },
+
+    getMyCartId: function(req, res) {
+      var userId = req.body.userId;
+      MyCart.getMyCartId(userId, function(err,myCartIdRes){
+        if (err){
+          throw err ;
+        }
+        if (!myCartIdRes){
+          res.json({success:false, message:'No cart'});
+        }
+        else{
+          res.json({success:true, id: myCartIdRes._id});
+        }
+               
+      })
     }
+
 }
 
 module.exports = myCart;
