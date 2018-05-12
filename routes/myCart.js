@@ -22,7 +22,12 @@ var myCart = {
     },
    
     create: function(req, res) {
-      var newCart = req.body;
+      var newCart = new MyCart({
+        name: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+        userType: req.body.userType
+      });
       MyCart.addCart(newCart, function(err,myCartRes){
         if (err){
           throw err ;

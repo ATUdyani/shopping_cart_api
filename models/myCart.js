@@ -15,7 +15,7 @@ var myCartSchema = mongoose.Schema({
 	},
 	myBill:{
 		type: String,
-		required : true
+		required: true
 	}
 });
 
