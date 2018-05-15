@@ -40,12 +40,13 @@ app.use('/', require('./routes'));*/
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
-  res.status(404).end();
-  next(err);
+  res.send('hello');
+  // res.status(404).end();
+  // next(err);
 });
  
 // Start the server
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
  
 var server = app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + server.address().port);
