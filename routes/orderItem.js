@@ -1,5 +1,6 @@
 var OrderItem  = require('../models/orderItem.js');
 var MyCart  = require('../models/myCart.js');
+var User  = require('../models/user.js');
 
 var orderItems = {
  
