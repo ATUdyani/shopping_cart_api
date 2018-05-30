@@ -8,12 +8,11 @@ var orderItemSchema = mongoose.Schema({
 		required: true
 	},
 	productItem:{
-		type: String,
-		required: true
+		type: mongoose.Schema.Types.ObjectId,
+		ref : 'ProductId'
 	},
 	quantity:{
-		type: String,
-		required: true
+		type: String
 	}
 });
 

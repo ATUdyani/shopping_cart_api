@@ -25,6 +25,8 @@ router.get('/api/v1/myCarts', myCart.getAll);
 router.get('/api/v1/myCart/:id', myCart.getOne);
 router.post('/api/v1/myCart', myCart.create);
 
+router.get('/api/v1/getMyCartId', myCart.getMyCartId);
+
 router.get('/api/v1/users', user.getAll);
 router.get('/api/v1/user/:id', user.getOne);
 
