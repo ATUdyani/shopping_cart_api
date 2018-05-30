@@ -11,7 +11,8 @@ var myCartSchema = mongoose.Schema({
 		required: true
 	},
 	orderItem:[{
-		type: String
+		type: mongoose.Schema.Types.ObjectId,
+		ref : 'OrderItem'
 	}],
 	user:{
 		type: mongoose.Schema.Types.ObjectId,

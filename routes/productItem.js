@@ -7,7 +7,6 @@ var productItem = {
         if (err){
           throw err ;
         }
-        res.send("Hello!");
         res.json(productItemsRes);
       })
     },

@@ -28,4 +28,3 @@ module.exports.getProductItem = function(_id, callback){
 module.exports.addProductItem = function(productItem, callback){
 	ProductItem.create(productItem, callback);
 }
-

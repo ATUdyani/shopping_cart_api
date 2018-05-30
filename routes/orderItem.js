@@ -1,6 +1,8 @@
 var OrderItem  = require('../models/orderItem.js');
 var MyCart  = require('../models/myCart.js');
 var User  = require('../models/user.js');
+var CommonFacade = require('./commonFacade');
+
 
 var orderItems = {
  
@@ -38,7 +40,8 @@ var orderItems = {
           res.json({success:false, message:'no order item found'});
         }
         else{
-          res.json({success:true, message:'Item add to cart'});
+          CommonFacade.updateCartOrderItem(req.body.myCartId,orderItemRes._id,res);
+          //res.json({success:true, message:'Item add to cart'});
         }
       })
     }
