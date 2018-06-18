@@ -1,4 +1,5 @@
 var MyBill  = require('../models/myBill.js');
+var CommonFacade = require('./commonFacade');
 
 var myBill = {
 
@@ -20,6 +21,10 @@ var myBill = {
         }
         res.json(myBillRes);
       })
+    },
+
+    generateBill: function(req,res, next) {
+      CommonFacade.generateBill(req,res,next);
     }
 }
 
