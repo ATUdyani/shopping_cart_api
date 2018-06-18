@@ -4,15 +4,12 @@ var mongoose = require('mongoose');
 //OrderItem Schema
 var orderItemSchema = mongoose.Schema({
 	myCart:{
-		type: String,
-		required: true
+		type: mongoose.Schema.Types.ObjectId,
+		ref : 'MyCart'
 	},
 	productItem:{
 		type: mongoose.Schema.Types.ObjectId,
-		ref : 'ProductId'
-	},
-	quantity:{
-		type: String
+		ref : 'ProductItem'
 	}
 });
 

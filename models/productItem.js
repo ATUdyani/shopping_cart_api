@@ -1,14 +1,15 @@
 var mongoose = require('mongoose');
 
 //ProductItem Schema
+// item_no 
 var productItemSchema = mongoose.Schema({
+
 	name:{
 		type: String,
 		required: true
 	},
 	price:{
-		type: String,
-		required: true
+		type: Number
 	}
 });
 
@@ -28,3 +29,4 @@ module.exports.getProductItem = function(_id, callback){
 module.exports.addProductItem = function(productItem, callback){
 	ProductItem.create(productItem, callback);
 }
+

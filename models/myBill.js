@@ -2,17 +2,12 @@ var mongoose = require('mongoose');
 
 //MyBill Schema
 var myBillSchema = mongoose.Schema({
-	orderItem:{
-		type: String,
-		required: true
-	},
-	discount:{
-		type: String,
-		required: true
+	myCart:{
+		type: mongoose.Schema.Types.ObjectId,
+		ref : 'MyCart'
 	},
 	total:{
 		type: String,
-		required: true
 	}
 });
 

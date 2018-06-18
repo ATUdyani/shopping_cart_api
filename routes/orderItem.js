@@ -41,7 +41,6 @@ var orderItems = {
         }
         else{
           CommonFacade.updateCartOrderItem(req.body.myCartId,orderItemRes._id,res);
-          //res.json({success:true, message:'Item add to cart'});
         }
       })
     }

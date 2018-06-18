@@ -19,7 +19,8 @@ router.get('/api/v1/orderItem/:id', ordertItem.getOne);
 router.post('/api/v1/orderItem', ordertItem.create);
 
 router.get('/api/v1/myBill/:id', myBill.get);
-router.post('/api/v1/myBill', myBill.create);
+//router.post('/api/v1/myBill', myBill.create);
+router.post('/api/v1/myBill', myBill.generateBill);
 
 router.get('/api/v1/myCarts', myCart.getAll);
 router.get('/api/v1/myCart/:id', myCart.getOne);
