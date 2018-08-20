@@ -41,7 +41,7 @@ module.exports = {
                     return cb(null, myCartRes.orderItem)
                 })
             },
-
+ 
             function getOrderItemDetails(cb) {
                 rsp.productItems = [];
                
@@ -72,6 +72,42 @@ module.exports = {
             }
             return res.json(results);
         })
+    },
+    // delete from cart and orderItem collection
+    deleteOrderItem: function(req, res, next) {
+        orderItemId = req.params.id;
+        cartRefId = req.params.refId || "001";
+        let rsp = {};
+        console.log(req.params);
+        const tasks = [
+            function deleteFromOrderItem(cb) {
+                OrderItem.deleteOrderItem(orderItemId, function (err, myRes) {
+                    if (err) {
+                        return cb(err);
+                    }
+                    console.log(myRes);
+                    rsp.myRes = myRes;
+                    return cb(null, {});
+                });
+            },
+            function deleteFromCart(cb) {
+                MyCart.deleteOrderItemFromCart(cartRefId, function (err, mycRes) {
+                    if (err) {
+                        return cb(err);
+                    }
+                    console.log("remove delete orderItem from cart");
+                    rsp.mycRes = mycRes;
+                    return cb(null, {})
+                })
+            }
+        ];
+        async.series(tasks, (err, results) => {
+            if (err) {
+                console.log(err);
+                return res.json("error:"+err);
+            }
+            return res.json(results);
+        });
     }
 
 }

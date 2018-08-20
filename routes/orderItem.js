@@ -43,6 +43,10 @@ var orderItems = {
           CommonFacade.updateCartOrderItem(req.body.myCartId,orderItemRes._id,res);
         }
       })
+    },
+
+    delete: function(req, res, next){
+      CommonFacade.deleteOrderItem(req, res, next);
     }
 }
 

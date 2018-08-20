@@ -47,3 +47,8 @@ module.exports.getMyCartId = function(userId, callback){
 		user:userId, status: true
 	}, callback);
 }
+
+//delete orderItem from cart
+module.exports.deleteOrderItemFromCart = function(cartRefId, orderId){
+	MyCart.update({refId:cartRefId, status: true}, { $pull: { orderItem: orderId } } )
+}

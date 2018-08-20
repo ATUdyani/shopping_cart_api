@@ -29,3 +29,8 @@ module.exports.getOrderItem = function(_id, callback){
 module.exports.addOrderItem = function(orderItem, callback){
 	OrderItem.create(orderItem, callback);
 }
+
+//Delete OrderItem 
+module.exports.deleteOrderItem = function(_id, callback){
+	OrderItem.findByIdAndRemove(_id, callback);
+}
