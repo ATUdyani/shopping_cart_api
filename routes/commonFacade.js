@@ -87,17 +87,17 @@ module.exports = {
                     }
                     console.log(myRes);
                     rsp.myRes = myRes;
-                    return cb(null, {});
+                    return cb(null, myRes);
                 });
             },
             function deleteFromCart(cb) {
-                MyCart.deleteOrderItemFromCart(cartRefId, function (err, mycRes) {
+                MyCart.deleteOrderItemFromCart(cartRefId, orderItemId, function (err, mycRes) {
                     if (err) {
                         return cb(err);
                     }
                     console.log("remove delete orderItem from cart");
                     rsp.mycRes = mycRes;
-                    return cb(null, {})
+                    return cb(null, mycRes)
                 })
             }
         ];

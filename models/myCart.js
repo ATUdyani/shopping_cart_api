@@ -49,6 +49,6 @@ module.exports.getMyCartId = function(userId, callback){
 }
 
 //delete orderItem from cart
-module.exports.deleteOrderItemFromCart = function(cartRefId, orderId){
-	MyCart.update({refId:cartRefId, status: true}, { $pull: { orderItem: orderId } } )
+module.exports.deleteOrderItemFromCart = function(cartRefId, orderId, callback){
+	MyCart.update({refId:cartRefId, status: true}, { $pull: { orderItem: orderId } }, callback);
 }
